@@ -7,9 +7,19 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: echo a string
-        run: echo "Hello Paavo!"
+        run: echo "Hello Paavo!" #Runs a shell-command
       - name: multipline script
         run: |
           python --version
           node -v
           
+  run-github-actions:
+    runs-on: windows-latest
+    steps:
+      - name: Simple JS Action
+        id: greet
+        uses: actions/hello-world-javascript-action@v1 #Uses an action at github.com/actions/hello-world-javascript-action and its version 1
+        with:
+          who-to-greet: John
+      - name: Log Greeting Time
+        run: echo "${{ steps.greet.outputs.time}}"

@@ -1,0 +1,38 @@
+#Array
+farm_animals_key1:
+  - Cat
+  - Dog
+  - Horse
+
+farm_animals_key2: [Cat, Dog, Horse]
+
+#Array of arrays
+Shopping_list:
+  - Tomato
+  - Cucumber
+  - Pizza_ingredients:
+    - Cheese
+    - Ham
+  - Dough
+
+Shopping_list2:
+  - Tomato
+  - Cocumber
+  - Pizza_ingredients:
+    - [Cheese, Ham]
+  - Dough
+
+#Array of Objects - This is an array (Students) consisting of key-value pairs: name, age, height, and average
+Students:
+  - Name: Paavo
+    Age: 23
+    Height: 174
+    Average: 3.1
+
+  - Name: Heidi
+    Age: 31
+    Height: 171
+    Average: 3.3
+
+Cars: {Porsche: german, Mercedes: german, Bentley: british}
+

@@ -1,0 +1,36 @@
+name: Run robot tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch: #What is workflow_dispatch action in YAML?
+
+jobs:
+  install-rf: #install-rf is job's ID
+    name: Build docker image and start tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2 #What are actions/<some action> commands?
+
+      - name: Build docker image
+        run: docker build -t robot-browser .
+
+      - name: Create folder for reports
+        run: mkdir -p ${{ github.workspace }}/reports #What is the ${{github.workspace}}/reports -expression?
+
+      - name: Run robot tests
+        run: |
+          docker run --name "robot-tests" \
+            robot-browser \
+              bash -c "robot -i demo --outputdir /robot/output /robot"
+      - name: Retrieve test results from docker container
+        if: always()
+        run: docker cp robot-tests:/robot/output/. ${{ github.workspace }}/reports/
+
+      - name: upload tests results as artifacts
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: reports
+          path: ${{ github.workspace }}/reports
