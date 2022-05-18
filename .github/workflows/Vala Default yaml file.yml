@@ -2,7 +2,7 @@ name: Run robot tests
 on:
   push:
   pull_request:
-  workflow_dispatch: #What is workflow_dispatch action in YAML?
+  workflow_dispatch: #What is workflow_dispatch action in YAML? Mahdollisuus käynnistää ajo GitHubista
 
 jobs:
   install-rf: #install-rf is job's ID
@@ -11,13 +11,13 @@ jobs:
 
     steps:
       - name: checkout code
-        uses: actions/checkout@v2 #What are actions/<some action> commands?
+        uses: actions/checkout@v2 #What are actions/<some action> commands? Marketplace toiminto: https://github.com/marketplace?type=actions
 
       - name: Build docker image
         run: docker build -t robot-browser .
 
       - name: Create folder for reports
-        run: mkdir -p ${{ github.workspace }}/reports #What is the ${{github.workspace}}/reports -expression?
+        run: mkdir -p ${{ github.workspace }}/reports #What is the ${{github.workspace}}/reports -expression? Ympäristömuuttujia
 
       - name: Run robot tests
         run: |

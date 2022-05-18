@@ -16,6 +16,9 @@ jobs:
   run-github-actions:
     runs-on: windows-latest
     steps:
+      - name: Display files under work
+        uses: actions/checkout@v3
+        run: ls
       - name: Simple JS Action
         id: greet
         uses: actions/hello-world-javascript-action@v1 #Uses an action at github.com/actions/hello-world-javascript-action and its version 1
