@@ -24,6 +24,7 @@ jobs:
           docker run --name "robot-tests" \
             robot-browser \
               bash -c "robot -i demo --outputdir /robot/output /robot"
+      
       - name: Retrieve test results from docker container
         if: always()
         run: docker cp robot-tests:/robot/output/. ${{ github.workspace }}/reports/
