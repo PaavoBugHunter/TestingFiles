@@ -14,12 +14,13 @@ jobs:
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
       - name: Dump job context
-        run: eccho '${{ toJSON(job) }}'
+        if: github.actor == 'PaavoBugHunter'
+        run: echo 'BugHunter is actor and ${{ toJSON(job) }}'
       - name: Dump steps context
-        if: failure() #If-key and step-status function
+        if: success() #If-key and step-status function
         run: echo '${{ toJSON(steps) }}'
       - name: Dump runner context
-        if: success()
+        if: always()
         run: echo '${{ toJSON(runner) }}'
 
   Function_expressions:
