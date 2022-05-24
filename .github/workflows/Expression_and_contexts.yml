@@ -1,0 +1,28 @@
+name: Context and expression testing
+#Contexts are collections of functions that shoiw information about your workflow when they get executed.
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  Jason_contexts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'
+      - name: Dump job context
+        run: echo '${{ toJSON(job) }}'
+      - name: Dump steps context
+        run: echo '${{ toJSON(steps) }}'
+      - name: Dump runner context
+        run: echo '${{ toJSON(runner) }}'
+
+  Function_expressions:
+    runs-on: macos-latest
+    steps:
+      - name: Display truth
+        env:
+          my_key: ${{ contains("Paavo", "av") }}
+        run: echo "my_key"
