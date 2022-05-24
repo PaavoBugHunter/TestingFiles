@@ -10,17 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
+        if: always()
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
       - name: Dump job context
-        run: echo '${{ toJSON(job) }}'
+        run: eccho '${{ toJSON(job) }}'
       - name: Dump steps context
+        if: failure() #If-key and step-status function
         run: echo '${{ toJSON(steps) }}'
       - name: Dump runner context
+        if: success()
         run: echo '${{ toJSON(runner) }}'
 
   Function_expressions:
     runs-on: macos-latest
+    if: github.event_name == "push" #If-key and job-status function
     steps:
       - name: Display truth
         env:
