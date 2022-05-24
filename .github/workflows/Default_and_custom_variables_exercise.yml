@@ -1,7 +1,7 @@
 name:  Default and custome variables exercise
 
 on:
-  push:
+  #push:
 
   workflow_dispatch:
 
