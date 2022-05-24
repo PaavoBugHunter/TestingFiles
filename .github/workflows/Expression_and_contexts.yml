@@ -23,6 +23,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Display truth
-        env:
-          my_key: ${{ contains( Paavo, "av" ) }}
-        run: echo "my_key"
+        #env:
+          #my_key: ${{ contains( Paavo, "av" ) }}
+        run: echo ${{ contains("Paavo", "av" ) }}
