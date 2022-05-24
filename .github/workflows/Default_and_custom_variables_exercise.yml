@@ -7,7 +7,7 @@ on:
 
 env:
   WF_level_env: Workflow custom variable
-  Hidden_WF_variable: ${{ secrets.HIDDEN_VARIABLE }}
+  Hidden_WF_variable: ${{ secrets.HIDDEN_VARIABLE }} #Not displayed in output
 
 jobs:
   myCustomVariables:
