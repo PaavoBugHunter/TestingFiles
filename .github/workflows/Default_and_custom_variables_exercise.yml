@@ -21,6 +21,15 @@ jobs:
           echo "Workflow env: $env:WF_level_env"
           echo "Job env: $env:Job_level_variable"
           echo "Step env: $env:Step_level_variable"
+  
+  VariableCarring:
+    runs-on: windows-latest
+    steps:
+      - name: Check variable carrying
+        run: |
+          echo "Workflow env should be displayed: $env:WF_level_env"
+          echo "Let me know if job-level variable is over-carried: $env:Job_level_variable"
+          echo "Step env shouldn't be carried and so blank next: $env:Step_level_variable"
 
   myDefaultVariables:
     runs-on: macos-latest
