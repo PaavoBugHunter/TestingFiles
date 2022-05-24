@@ -18,7 +18,7 @@ jobs:
         env: 
           Step-level_variable: Step-level custom variable
         run: |
-          echo "Workflow env: ${WF-level_env}"
+          echo "Workflow env: $WF-level_env"
           echo "Job env: ${Job-level_variable}"
           echo "Step env: ${Step-level_variable}"
 
