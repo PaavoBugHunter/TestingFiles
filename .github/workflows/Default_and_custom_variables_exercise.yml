@@ -21,6 +21,8 @@ jobs:
           echo "Workflow env: $env:WF_level_env"
           echo "Job env: $env:Job_level_variable"
           echo "Step env: $env:Step_level_variable"
+      - name: Show me carried job-level
+        run: echo "Job-level vatriable carried over, look! $env:Job_level_variable"
   
   VariableCarring:
     runs-on: windows-latest
