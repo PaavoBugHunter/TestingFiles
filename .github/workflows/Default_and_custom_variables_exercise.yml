@@ -6,31 +6,31 @@ on:
   workflow_dispatch:
 
 env:
-  WF-level_env: Workflow custom variable
+  WF_level_env: Workflow custom variable
 
 jobs:
   myCustomVariables:
     runs-on: windows-latest
     env: 
-      Job-level_variable: Job-level custom variable
+      Job_level_variable: Job-level custom variable
     steps:
       - name: Log names
         env: 
-          Step-level_variable: Step-level custom variable
+          Step_level_variable: Step-level custom variable
         run: |
-          echo "Workflow env: $WF-level_env"
-          echo "Job env: ${Job-level_variable}"
-          echo "Step env: ${Step-level_variable}"
+          echo "Workflow env: $env:WF_level_env"
+          echo "Job env: $env:Job_level_variable"
+          echo "Step env: $env:Step_level_variable"
 
   myDefaultVariables:
     runs-on: macos-latest
     steps:
       - name: display default variable values
         run: |
-          echo "HOME: ${"HOME}"
-          echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
-          echo "GITHUB_Action: ${GITHUB_ACTION}"
-          echo "GITHUB_Actions: ${GITHUB_ACTIONS}"
-          echo "GITHUB_Action path: ${GITHUB_ACTION_PATH}"
-          echo "GITHUB_Action repo: ${GITHUB_ACTION_REPOSITORY}"
-          echo "GITHUB_repo: ${GITHUB_REPOSITORY}"
+          echo "HOME: $HOME"
+          echo "GITHUB_WORKFLOW: $GITHUB_WORKFLOW"
+          echo "GITHUB_Action: $GITHUB_ACTION"
+          echo "GITHUB_Actions: $GITHUB_ACTIONS"
+          echo "GITHUB_Action path: $GITHUB_ACTION_PATH"
+          echo "GITHUB_Action repo: $GITHUB_ACTION_REPOSITORY"
+          echo "GITHUB_repo: $GITHUB_REPOSITORY"
