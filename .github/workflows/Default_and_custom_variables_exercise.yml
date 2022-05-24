@@ -7,6 +7,7 @@ on:
 
 env:
   WF_level_env: Workflow custom variable
+  Hidden_WF_variable: ${{ secrets.HIDDEN_VARIABLE }}
 
 jobs:
   myCustomVariables:
@@ -19,6 +20,7 @@ jobs:
           Step_level_variable: Step-level custom variable
         run: |
           echo "Workflow env: $env:WF_level_env"
+          echo "My hidden variable never to be displayed: $env:Hidden_WF_variable"
           echo "Job env: $env:Job_level_variable"
           echo "Step env: $env:Step_level_variable"
       - name: Show me carried job-level
