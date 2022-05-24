@@ -24,7 +24,7 @@ jobs:
 
   Function_expressions:
     runs-on: macos-latest
-    if: github.event_name == "push" #If-key and job-status function
+    if: github.event_name == 'push' #If-key and job-status function
     steps:
       - name: Display truth
         env:
