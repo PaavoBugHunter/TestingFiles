@@ -25,4 +25,4 @@ jobs:
       - name: Display truth
         #env:
           #my_key: ${{ contains( Paavo, "av" ) }}
-        run: echo ${{ contains("Paavo", "av" ) }}
+        run: echo ${{ contains('Paavo', 'av' ) }}
