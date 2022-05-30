@@ -10,6 +10,11 @@ jobs:
       fail-fast: true
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
+        exclude:
+          - os: ubuntu-latest #Excludes execution for matrix-unit ubuntu-latest
+        include:
+          - os: windows-latest
+            is_windows: 'True' #Includes variable is_windows to windows-latest matrix-unit
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -23,7 +28,9 @@ jobs:
 
       - name: Log Windows version
         if: matrix.os == 'windows-latest'
-        run: Get-ComputerInfo | select OsHardwareAbstractionLayer
+        run: |
+          Get-ComputerInfo | select OsHardwareAbstractionLayer
+          echo $is_windows
 
       #- name: Catch job's os
       #  uses: actions/setup-node@v3
