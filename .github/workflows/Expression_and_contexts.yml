@@ -1,6 +1,9 @@
 name: Context and expression testing
 #Contexts are collections of functions that shoiw information about your workflow when they get executed.
-
+# Expression is a definition for a variable or function that is evaluated.
+# The purpose is to access information about your workflow, jobs, steps, 
+# environments, and runs. See more at https://docs.github.com/en/actions/learn-github-actions/contexts
+# It uses syntax ${{ context_and_specification }}.
 on:
   push:
   workflow_dispatch:

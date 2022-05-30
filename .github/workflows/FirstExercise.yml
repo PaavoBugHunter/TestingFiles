@@ -5,9 +5,11 @@ on: workflow_dispatch
 jobs:
   run-shell-command:
     runs-on: windows-latest
+    timeout-minutes: 10
     steps:
       - name: echo a string
         run: echo "Hello Paavo!" #Runs a shell-command
+        timeout-minutes: 3 #Specifies how many minutes is allowed for the step to run before it is killed.
       - name: multipline script
         run: |
           python --version
@@ -15,9 +17,11 @@ jobs:
           
   run-github-actions:
     runs-on: windows-latest
+    needs: [run-shell-command] #This makes job run-github-actions run only after run-shell-command has run.
     steps:
       - name: Checkout the local repo
         uses: actions/checkout@v3
+        continue-on-error: true #This means subsequent steps run even if step Checkout the local repo fails.
       - name: Display files under work
         run: ls
       - name: Simple JS Action
