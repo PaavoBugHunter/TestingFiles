@@ -10,13 +10,16 @@ jobs:
       fail-fast: true
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
-  
     runs-on: ${{ matrix.os }}
+
     steps:
-      - name: Catch job's os
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.os }}
-        
-      - name: Display os-version
+      - name: Log node version
         run: node -v
+
+      #- name: Catch job's os
+      #  uses: actions/setup-node@v3
+      #  with:
+      #    node-version: ${{ matrix.os }}
+        
+      #- name: Display os-version
+      #  run: node -v
