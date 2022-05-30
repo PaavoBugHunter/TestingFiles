@@ -23,7 +23,7 @@ jobs:
 
       - name: Log Windows version
         if: matrix.os == 'windows-latest'
-        run: ver
+        run: Get-ComputerInfo | select OsHardwareAbstractionLayer
 
       #- name: Catch job's os
       #  uses: actions/setup-node@v3
