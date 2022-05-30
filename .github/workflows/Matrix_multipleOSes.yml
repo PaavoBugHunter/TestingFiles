@@ -13,7 +13,10 @@ jobs:
   
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Display job's os
-        env:
-          os_variable: ${{ matrix.os }}
-        run: echo "$os_variable"
+      - name: Catch job's os
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.os }}
+        
+      - name: Display os-version
+        run: node -v
