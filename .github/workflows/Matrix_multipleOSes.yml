@@ -13,8 +13,17 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Log node version
-        run: node -v
+      - name: Log mac version
+        if: matrix.os == macos-latest
+        run: sw_vers -productVersion
+
+      - name: Log ubuntu version
+        if: matrix.os == ubuntu-latest
+        run: lsb_release -d
+
+      - name: Log Windows version
+        if: matrix.os == windows-latest
+        run: ver
 
       #- name: Catch job's os
       #  uses: actions/setup-node@v3
