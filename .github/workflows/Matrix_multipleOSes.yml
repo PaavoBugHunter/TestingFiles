@@ -1,0 +1,19 @@
+name: Multiple OSes for workflow
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  job_for_the_matrix:
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+  
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Display job's os
+        env:
+          os_variable: ${{ matrix.os }}
+        run: echo "$os_variable"
