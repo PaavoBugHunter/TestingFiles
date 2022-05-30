@@ -16,11 +16,15 @@ jobs:
           - os: windows-latest
             is_windows: 'True' #Includes variable is_windows to windows-latest matrix-unit
     runs-on: ${{ matrix.os }}
+    env:
+      is_windows_true: ${{ matrix.is_windows }}
 
     steps:
       - name: Log mac version
         if: matrix.os == 'macos-latest'
-        run: sw_vers -productVersion
+        run: |
+          sw_vers -productVersion
+          echo $is_windows_true
 
       - name: Log ubuntu version
         if: matrix.os == 'ubuntu-latest'
@@ -30,7 +34,7 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: |
           Get-ComputerInfo | select OsHardwareAbstractionLayer
-          echo $is_windows
+          echo $is_windows_true
 
       #- name: Catch job's os
       #  uses: actions/setup-node@v3
