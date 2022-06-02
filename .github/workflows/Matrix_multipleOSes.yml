@@ -1,4 +1,6 @@
 name: Multiple OSes for workflow
+# A job is set-up to run on mulitple operating systems with jobs -> job_ID -> strategy -> matrix command-chain.
+# A matrix can include combinations of opersating systems and their versions
 
 on:
   push:
@@ -35,11 +37,3 @@ jobs:
         run: |
           Get-ComputerInfo | select OsHardwareAbstractionLayer
           echo $is_windows_true
-
-      #- name: Catch job's os
-      #  uses: actions/setup-node@v3
-      #  with:
-      #    node-version: ${{ matrix.os }}
-        
-      #- name: Display os-version
-      #  run: node -v

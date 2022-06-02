@@ -1,0 +1,18 @@
+name: ContainerExerciseWF
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  First_Container_job:
+    runs-on: ubuntu-latest
+    container:
+      image: node:13.5.0-alpine3.10 #The image is fetched from Docker Hub -registry. To access that, 
+      #a Docekr-account with and ID is needed (possibly the password needs to be added to GitHub-accounts secrets), as well as
+      #ID for the needed image.
+
+    steps:
+      - name: log some info
+        run: |
+          node -v
+          cat /etc/os-release
