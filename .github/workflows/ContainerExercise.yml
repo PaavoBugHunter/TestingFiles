@@ -18,6 +18,6 @@ jobs:
       
       - name: docker-step
         uses: docker://node:16.15-alpine3.14
-        run: |
-          node -v
-          cat /etc/os-release
+        with:
+          entrypoint: /c/Program Files/nodejs/node
+          args: -v
