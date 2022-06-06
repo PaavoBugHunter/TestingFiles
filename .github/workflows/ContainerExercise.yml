@@ -6,13 +6,18 @@ on:
 jobs:
   First_Container_job:
     runs-on: ubuntu-latest
-    container:
-      image: node:13.5.0-alpine3.10 #The image is fetched from Docker Hub -registry. To access that, 
-      #a Docekr-account with and ID is needed (possibly the password needs to be added to GitHub-accounts secrets), as well as
-      #ID for the needed image.
+    container: #By default, Docker-container is 
+      image: node:13.5.0-alpine3.10 #The image (13.5.0-alpine3.10) is fetched from the public Docker Hub -registry. To access that, 
+      #a Docker-ID is needed (node). Workflow creator needs no account, only the Docker-ID and image-ID.
 
     steps:
       - name: log some info
+        run: |
+          node -v
+          cat /etc/os-release
+      
+      - name: docker-step
+        uses: docker://node:16.15-alpine3.14
         run: |
           node -v
           cat /etc/os-release

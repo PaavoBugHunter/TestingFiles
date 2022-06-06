@@ -5,7 +5,7 @@ name: Context and expression testing
 # environments, and runs. See more at https://docs.github.com/en/actions/learn-github-actions/contexts
 # It uses syntax ${{ context_and_specification }}.
 on:
-  push:
+  #push:
   workflow_dispatch:
 
 jobs:

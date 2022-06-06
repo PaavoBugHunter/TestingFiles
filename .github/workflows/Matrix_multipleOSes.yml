@@ -3,7 +3,7 @@ name: Multiple OSes for workflow
 # A matrix can include combinations of opersating systems and their versions
 
 on:
-  push:
+  #push:
   workflow_dispatch:
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
           - os: ubuntu-latest #Excludes execution for matrix-unit ubuntu-latest
         include:
           - os: windows-latest
-            is_windows: 'True' #Includes variable is_windows to windows-latest matrix-unit
+            is_windows: 'True' #Adds variable is_windows to windows-latest matrix-unit
     runs-on: ${{ matrix.os }}
     env:
       is_windows_true: ${{ matrix.is_windows }}
