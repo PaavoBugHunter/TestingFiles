@@ -19,5 +19,5 @@ jobs:
       - name: docker-step
         uses: docker://node:16.15-alpine3.14
         with:
-          entrypoint: /c/Program Files/nodejs/node
+          entrypoint: /usr/local/bin/node
           args: -v
