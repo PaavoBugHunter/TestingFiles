@@ -6,7 +6,7 @@ on:
 jobs:
   First_Container_job:
     runs-on: ubuntu-latest
-    container: #By default, Docker-container is 
+    container: #By default, the container is Docker. Here's how Docker is used in individual jobs - by container and image keys.
       image: node:13.5.0-alpine3.10 #The image (13.5.0-alpine3.10) is fetched from the public Docker Hub -registry. To access that, 
       #a Docker-ID is needed (node). Workflow creator needs no account, only the Docker-ID and image-ID.
 
@@ -17,7 +17,7 @@ jobs:
           cat /etc/os-release
       
       - name: docker-step
-        uses: docker://node:16.15-alpine3.14
+        uses: docker://node:16.15-alpine3.14 #Here's how Docker is used in individual steps
         with:
           entrypoint: /usr/local/bin/node
           args: -v
