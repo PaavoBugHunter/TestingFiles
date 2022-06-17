@@ -3,12 +3,24 @@ class Restaurant:
     def __init__(self, name, cuisine_type):
         self.name = name
         self.cuisine_type = cuisine_type
+        self.number_served = 0
 
     def describe_restaurant(self):
         print(f"{self.name} offers {self.cuisine_type} food")
 
     def open_restaurant(self):
         print(f"Welcome! We are open.")
+
+    def set_number_served(self, number_of_clients):
+        self.number_served = number_of_clients
+
+    def increment_number_served(self, new_clients):
+        if new_clients < 0:
+            print("You can't roll back number of guests")
+        elif new_clients == 0:
+            print("No need to add zero guests")
+        else:
+            self.number_served += new_clients
 
 restaurant = Restaurant("Noste", "Thai")
 
@@ -42,13 +54,23 @@ björk_restau = Restaurant("Björk", "hungarian")
 
 ruoho_restau.describe_restaurant()
 ruoho_restau.open_restaurant()
+print(ruoho_restau.number_served)
+ruoho_restau.number_served = 11
+print(ruoho_restau.number_served)
+ruoho_restau.set_number_served(13)
+print(ruoho_restau.number_served)
 
 ant_restau.describe_restaurant()
 ant_restau.open_restaurant()
+ant_restau.increment_number_served(-2)
+ant_restau.increment_number_served(0)
+ant_restau.increment_number_served(4)
+print(ant_restau.number_served)
 
 björk_restau.describe_restaurant()
 björk_restau.open_restaurant()
 
+'''
 mauri_visitor = User("Mauri", "Wof", "dog@couch.com", "123-Hau-456")
 tötterö_visitor = User("Juli", "Tötterö", "juli@lelu.fi", "987654")
 
@@ -57,3 +79,4 @@ mauri_visitor.greet_user()
 
 tötterö_visitor.describe_user()
 tötterö_visitor.greet_user()
+'''
