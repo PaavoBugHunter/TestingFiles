@@ -22,8 +22,27 @@ class Cars:
         else:
             print("You can't roll back on odometer")
 
+
+class ElectricCar(Cars): #"Cars" in parenthesis indicates ElectricCar-class to be child-class of the Cars-class"
+    '''Represents aspects of a car - electric car to be precise'''
+
+    def __init__(self, make, model, year, battery):
+        '''
+        Initialize attributes of the parent class.
+        Then initialize attributes of electric car.
+        '''
+        super().__init__(make, model, year) #The super()-function imports all attributes and methods from Cars-class to ElectricCars-class. Alternative expression here is Cars.__init__(self, make, model, year):
+        self.battery = battery
+
+    def describe_battery(self):
+        print(f"This car, {self.make} {self.model}, has {self.battery}-kWh battery")
+
 my_car = Cars("Porsche", "911", 2017)
 print(my_car.vehicle_description())
+
+my_tesla = ElectricCar("Tesla", "Model S", "2020", 80)
+print(my_tesla.vehicle_description())
+my_tesla.describe_battery()
 
 '''Simple mileage addition and then reading'''
 my_car.odometer_reading = 32
@@ -32,3 +51,4 @@ my_car.read_odometer()
 '''Mileage-addition through a method'''
 my_car.update_odometer(90)
 my_car.read_odometer()
+
