@@ -23,32 +23,58 @@ class Cars:
             print("You can't roll back on odometer")
 
 
+class Battery():
+    '''Simple class to describe a battery and its behaviors'''
+    def __init__(self, battery_reserve):
+        self.battery_reserve = battery_reserve
+
+    def describe_battery(self):
+        '''Print how much reserve the battery has'''
+        print(f"This car has {self.battery_reserve}-kWh battery")
+
+    def estimate_range(self):
+        '''Gives estimate about drive-range with the battery-reserve'''
+        if self.battery_reserve >= 70 and self.battery_reserve <= 75:
+            range = 100
+        elif self.battery_reserve < 70:
+            range = 90
+        else:
+            range = 110
+
+        print(f"Estimated drive-distance with this battery is {range}Km.")
+
+    def upgrade_battery(self, upload):
+        '''Increase battery-charge by upload-amount'''
+        self.battery_reserve += upload
+        print(f"Battery uploaded with {upload}-Kwh")
+
+
 class ElectricCar(Cars): #"Cars" in parenthesis indicates ElectricCar-class to be child-class of the Cars-class"
     '''Represents aspects of a car - electric car to be precise'''
 
-    def __init__(self, make, model, year, battery):
+    def __init__(self, make, model, year):
         '''
         Initialize attributes of the parent class.
         Then initialize attributes of electric car.
         '''
         super().__init__(make, model, year) #The super()-function imports all attributes and methods from Cars-class to ElectricCars-class. Alternative expression here is Cars.__init__(self, make, model, year):
-        self.battery = battery
+        self.battery = Battery(75) #Establishes an instance of Battery-class as an attribute of ElectricCar
 
-    def describe_battery(self):
-        print(f"This car, {self.make} {self.model}, has {self.battery}-kWh battery")
-
-my_car = Cars("Porsche", "911", 2017)
-print(my_car.vehicle_description())
-
-my_tesla = ElectricCar("Tesla", "Model S", "2020", 80)
+my_tesla = ElectricCar("Tesla", "Model S", "2020")
+my_tesla.battery.battery_reserve = 74
 print(my_tesla.vehicle_description())
-my_tesla.describe_battery()
+my_tesla.battery.describe_battery()
+my_tesla.battery.estimate_range()
+my_tesla.battery.upgrade_battery(10)
+my_tesla.battery.estimate_range()
 
-'''Simple mileage addition and then reading'''
-my_car.odometer_reading = 32
-my_car.read_odometer()
+print("\n")
 
-'''Mileage-addition through a method'''
-my_car.update_odometer(90)
-my_car.read_odometer()
+electric_mercedes = ElectricCar("Mercedes", "EQS", 2022)
+electric_mercedes.battery.battery_reserve = 60
+print(electric_mercedes.vehicle_description())
+electric_mercedes.battery.describe_battery()
+electric_mercedes.battery.estimate_range()
+electric_mercedes.battery.upgrade_battery(15)
+electric_mercedes.battery.estimate_range()
 
