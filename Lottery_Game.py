@@ -10,5 +10,4 @@ while draws > population:
     draws = int(input("Give number of draws to lottery:"))
 
 hand = Deck(population, draws)
-hand.show_list()
 hand.draw_a_hand()
