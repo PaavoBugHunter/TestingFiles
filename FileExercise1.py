@@ -31,7 +31,7 @@ class DecimalsOfPi:
         with open(millpy) as my_py_object:
             my_py_variable = my_py_object.read()
         #print(type(my_py_variable))
-        print(my_py_variable[:50])
+        print(my_py_variable[:self.decimals])
         print(len(my_py_variable))
 
     def birthday_in_py(self):
